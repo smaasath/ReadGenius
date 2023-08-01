@@ -1,0 +1,177 @@
+.concolor{
+background-color:#D7DBDD ;
+}
+
+.enlarge-on-hover{
+  transition: transform 0.3s ease;
+}
+
+.enlarge-on-hover:hover {
+  width: 200px;
+  transform: scale(1.1);
+}
+
+.fall {
+  font-size: 25px !important;
+}
+
+.checked {
+  color: orange;
+}
+
+
+
+
+
+
+
+header {
+  background: #B1B2FF;
+  justify-content: left;
+
+}
+nav {
+  position: relative;
+  width: fit-content;
+  display: flex;
+  justify-content: right;
+  gap: 1rem;
+  border-bottom: 2px solid blue;
+  padding-right: 1rem;
+}
+button {
+  all: unset;
+  padding: 1rem 0;
+  width: 15%;
+  min-width: 120px;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  font-family: sans-serif;
+  text-align: center;
+  color: black;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.4s;
+  z-index: 1;
+}
+button:not(.active) {
+  color: #555;
+  transition: all 0s
+}
+.slideBar {
+  position: absolute;
+  width: var(--nav-btn-width);
+  height: 1px;
+  background: lime;
+  bottom: -2px;
+  left: 0;
+  display: none;
+}
+#bgSlider {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  bottom: -2px;
+  width: 15%;
+  min-width: 120px;
+  background: #EEF1FF;
+  border-bottom: 2px solid white;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  transition: all 0.4s;
+}
+main {
+  color: white;
+  text-align: center;
+  font-family: verdana;
+  padding: 1vw;
+  max-height: 600px; overflow: scroll;
+}
+main h1 {
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 600px) and (min-width: 401px) {
+  nav {
+    gap: 10px;
+  }
+  button {
+    padding: 0.5rem 0;
+    font-size: smaller;
+    min-width: 80px;
+  }
+  #bgSlider {
+    min-width: 80px;
+  }
+}
+@media screen and (max-width: 400px) {
+  nav {
+    gap: 0;
+    padding: 0;
+    width: 100%;
+  }
+  button,
+  #bgSlider {
+    min-width: 0;
+    width: 25%;
+    font-size: smaller;
+  }
+}
+
+
+
+.cardstyle{
+  background-color: #AAC4FF !important;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
+  
+ 
+ }
+ 
+ .image-container{
+    /* Set the desired height of the container */
+   overflow: hidden; /* This ensures that any overflow is hidden */
+   border-radius: 0px 20px 20px 0px;
+ }
+ 
+ 
+ 
+ 
+ .postcard__bar {
+   width: 50px;
+   height: 5px;
+   margin: 10px 0;
+   border-radius: 5px;
+   background-color: #2e4d50;
+   transition: width 0.2s ease;
+ }
+ 
+ 
+ 
+ .cardstyle:hover .postcard__bar {
+   width: 200px;
+ }
+ 
+ 
+ 
+ 
+ .image-container img {
+   width: 100%; /* Make the image take up the full width of its container */
+   height: 100%; /* Make the image take up the full height of its container */
+   object-fit: cover; /* This property scales the image to completely cover the container while preserving its aspect ratio */
+   transition: transform 0.3s ease; /* Add a smooth transition effect on hover */
+ }
+ .cardstyle:hover .image-container img.enlarge-on-hover{
+ 
+   transform: scale(1.1); /* Scale the image up to 1.2 times on hover */
+ }
+ 
+ .fall {
+   font-size: 25px !important;
+ }
+ 
+ .checked {
+   color: orange;
+ }
+ 
+
