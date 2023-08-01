@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>User</title>
+        <link rel="stylesheet" href="css/admin.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <!-- nav bar start -->
+        <div class="sticky-top bg-white shadownav" style="height: 50px;">
+            <div class="row d-flex justify-content-end p-2">
+                <div class="col-3">
+                    <div class="row">
+                        <div class="col-3">
+                            <b>Admin</b>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa-solid fa-user fa-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- nav bar end -->
+
+
+        <!-- Table -->
+
+        <div class="p-5">
+
+
+            <div class="rounded-top-4 p-0 border border-dark-subtle">
+                <div class="row align-items-center">
+                    <div class="col-3">           
+                        <div class="input-group rounded p-3">
+                            <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon" >
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-3"> 
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Department</option>
+                            <option value="1">Department1</option>
+                            <option value="2">Department2</option>
+                            <option value="3">Department3</option>
+                        </select>
+                    </div>
+
+                    <div class="col-2"> 
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Course</option>
+                            <option value="1">Course 1</option>
+                            <option value="2">Course 2</option>
+                            <option value="3">Course 3</option>
+                        </select>
+                    </div>
+                    <div class="col-2"> 
+                        <button type="button" class="btn btn-primary bgcol" onclick="Addstudent()">Add Student</button>
+                    </div>
+
+                    <div class="col-2" >
+                        <button type="button" class="btn btn-success" >Save</button>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+            </div>
+            <!-- Table body -->
+            <div class="container bg-white m-0 p-0" style=" max-height: 450px; overflow: scroll;">
+                <table class="table table-hover p-0">
+
+                    <!-- Table row -->
+
+
+                    <tr class="sticky-top">
+
+                        <th class="col-1 bgcol p-2">ID</th>
+                        <th class="col-2 bgcol p-2">ISBN</th>
+                        <th class="col-3 bgcol p-2">Title</th>
+                        <th class="col-2 bgcol p-2">Published Date</th>
+                        <th class="col-2 bgcol p-2">Category</th>
+                        <th class="col-1 bgcol p-2">View</th>
+                        <th class="col-1 bgcol p-2">Edit</th>
+
+                    </tr>
+
+                    <tr>
+                        <td class="col-1">0001</td>
+                        <td class="col-2">0--2--.-6-8-96-45454</td>
+                        <td class="col-3">Book Title</td>
+                        <td class="col-2">2023/12/13</td>
+                        <td class="col-2">Education</td>
+                        <td class="col-1"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#ViewBook">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#EditBook">Edit</button></td>
+                    </tr>
+
+
+
+
+                    <!-- Table row -->
+
+                </table> 
+
+            </div>
+            <br>
+            <!-- Table Head -->
+
+        </div>
+
+        <!-- Table -->
+
+
+
+
+        <!-- View book -->
+        <div class="modal fade" id="ViewBook" tabindex="-1" aria-labelledby="ViewBook" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="ViewBook">View Book</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- View book -->
+
+
+        <!-- Edit book -->
+        <div class="modal fade" id="EditBook" tabindex="-1" aria-labelledby="EditBook" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="EditBook">Edit Book</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="swalsave()" data-bs-dismiss="modal">Save changes</button>
+                        <button type="button" class="btn btn-danger" onclick="swalDelete()" data-bs-dismiss="modal">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Edit book -->
+
+
+
+       <script src="js/admin.js"></script>
+    </body>
+
+
+</html>

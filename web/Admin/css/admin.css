@@ -3,7 +3,142 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : Aug 1, 2023, 6:55:11 PM
+    Created on : Jun 25, 2023, 12:41:39 AM
     Author     : Texus
 */
+.colordashbord{
+    background-color: #D2DAFF !important;
+
+    height: -webkit-fill-available;
+    z-index: 10000 !important;
+
+
+}
+
+.navbarcolor{
+    color: #1B4F72 !important;
+    padding: 14px 14px 14px 14px !important;
+    font-size: 17px !important;
+    font-weight: bold !important;
+    cursor: pointer;
+    width: auto;
+}
+
+.navbarcolor.before {
+    background-color: #64CCC5 !important;
+
+}
+.navbarcolor.active {
+    background-color: #B1B2FF !important;
+    color: #000 !important;
+
+}
+.navbarcolor.active:hover {
+
+    color: #000000 !important;
+
+}
+
+.navbarcolor:hover{
+
+
+    color: #000000 !important;
+}
+
+
+.dashboardhr{
+    color:#000 !important;
+}
+.loggedout{
+    margin-left: 10px !important;
+}
+.icondash{
+    padding: 14px 14px 14px 14px !important;
+}
+
+
+.navbardah{
+    background-color:white !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    
+}
+
+
+
+.col10edit{
+
+    
+
+   
+  
+    background-color: #F7F9F9 ;
+
+
+
+}
+
+.col11edit{
+
+   
+
+   
+    
+    background-color: #F7F9F9 ;
+
+
+
+
+}
+
+.navbarcolorafter{
+    color: #1B4F72 !important;
+    padding: 29px 25px 25px 18px !important;
+    font-size: 25px !important;
+    font-weight: bold !important;
+    cursor: pointer;
+    width: 55px !important;
+    border-radius: 12px;
+    width: fit-content;
+}
+
+.navbarcolorafter.before {
+    background-color: #64CCC5 !important;
+
+}
+.navbarcolorafter.active {
+     background-color: #B1B2FF !important;
+    color: #000 !important;
+    margin-left:8px;
+
+}
+.navbarcolorafter.active:hover {
+
+  color: #000000 !important;
+
+}
+
+.navbarcolorafter:hover{
+
+
+    color: #000000 !important;
+}
+
+
+.logoafter{
+    width: 60px;
+    height: 60px;
+    margin-left: 6px;
+
+    margin-top: 58px;
+}
+
+.logimage{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.shadownav{
+   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
 
