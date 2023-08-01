@@ -1,0 +1,187 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 25, 2023, 2:24:34 PM
+    Author     : Dell
+*/
+.bg-img-1{
+    background-image: url('Images/coffee-cup-with-book-eyeglasses.jpg')
+}
+.bg-img-2{
+    background-image: url('Images/portrait-beautiful-young-woman-holding-books-showing-thumb-up.jpg')
+}
+.bg-img-3{
+    background-image: url('Images/red-rose-inside-open-book.jpg')
+}
+
+.carousel-image{
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+ 
+
+.carousel-caption{
+    bottom: 220px;
+    z-index: 2;
+}
+
+.carousel-caption h5{
+    font-size: 45px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 25px;
+}
+ 
+.carousel-caption p{
+    width: 60%;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+ 
+
+/*main content*/
+.con{
+    padding-bottom: 2.5rem;
+}
+/*card 1*/
+#btn2 button{
+    width: 120px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid black;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+ 
+#btn2 button:hover{
+    background-color: #B1B2FF;
+}
+/*card 1*/
+
+/*card 2*/
+#tpc{
+    box-shadow: 0 0 5px black;
+    transition: o.5s ease;
+    cursor: pointer;
+}
+
+#tpc:hover{
+    transform: translateY(-15px);
+}
+/*card 2*/
+
+
+/*footer*/
+.footer .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+    gap: 1.5rem;
+    padding-top: 2.2rem;
+}
+
+.footer .box-container .box h5{
+    font-size: 1.2rem;
+    color: black;
+    padding: 1rem 0;
+    padding-left: 2rem;
+}
+
+.footer .box-container .box a{
+    display: black;
+    font-size: 1.2rem;
+    color: black;
+    padding: 1rem 0;
+}
+
+.footer .box-container .box a i{
+    color:  #241468;
+    padding-right: .5rem;
+    padding-left: 2rem;
+}
+
+.footer .box-container .box a:hover i{
+    padding-right: 2rem;
+    
+}
+
+.footer .box-container .box .map{
+    width: 100%;
+    padding-left: 2rem;
+}
+
+.footer.share{
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.footer .share a{
+    height: 3rem;
+    width: 3rem;
+    line-height: 3rem;
+    font-size: 1.8rem;
+    color:  #F4F4F4;
+    background:  #0D1282;
+    margin: 0 .3rem;
+    border-radius: 50%;
+    justify-content: center;
+}
+
+.footer .share a:hover{
+    background: blue;
+}
+
+.footer .credit{
+    border-top: 2px solid black;
+    margin-top: 2rem;
+    padding: 0 1rem;
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+    font-size: 1.2rem;
+    color: black;
+    text-align: center;
+}
+
+.footer .credit span{
+    color: #241468;
+    
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    
+}
+
+.share {
+  display: flex;
+  gap: 10px; /* Adjust the gap between icons if needed */
+  justify-content: center;
+  align-items: center;
+}
+/*footer*/
+
+/*about*/
+#btn3 button{
+    width: 120px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid black;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+#btn3 button:hover{
+    background-color: #B1B2FF;    
+}
+
+.conabout{
+    padding-bottom: 3rem;
+}
+/*about*/
