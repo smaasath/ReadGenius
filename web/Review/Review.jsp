@@ -20,7 +20,7 @@
   <div class="container-fluid p-5">
 
     <div class="row">
-      <div class="col-3">
+      <div class="col-lg-3">
         <div class="row m-2 mt-0">
           <div class=" p-4" style="text-align: center; height: 99%;background-color: #EEF1FF;">
             <img src="Images/book1.jpg" class="w-75 enlarge-on-hover" alt="...">
@@ -87,7 +87,7 @@
 
       </div>
 
-      <div class="col-9" style="background-color: #EEF1FF;">
+      <div class="col-lg-9" style="background-color: #EEF1FF;">
         <div class="row">
           <div class="m-1 p-4">
             <div class="h1">The Curious Incident of the Dog in the Night-Time</div>
@@ -171,7 +171,7 @@
           </div>
         </div>
         <div class="h5 mt-4">Review</div>
-        <div class="col-12 p-0" style="background-color: #F2F3F4 ;">
+        <div class="col-lg-12 p-0" style="background-color: #F2F3F4 ;">
           <header class="ps-3">
             <nav>
               <div id="bgSlider"></div>
@@ -230,7 +230,7 @@
                         <i class="fa fa-arrow-right"></i>
                     </a>
                 </div>
-                <div class="col-12">
+                <div class="col-lg-12">
                     <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -238,7 +238,7 @@
                                     <div class="col-lg-5 m-3 card-style">
                                         <div class="row">
                                             <div class="col-8">
-                                                <div class="card-body  d-none d-lg-block">
+                                                <div class="card-body">
                                                     <h4 class="card-title mt-4">Book</h4>
 
                                                     <div class="postcard__bar"></div>
@@ -298,7 +298,7 @@
                                     <div class="col-lg-5 m-3 card-style">
                                         <div class="row">
                                             <div class="col-8">
-                                                <div class="card-body  d-none d-lg-block">
+                                                <div class="card-body">
                                                     <h4 class="card-title mt-4">Book</h4>
 
                                                     <div class="postcard__bar"></div>
@@ -366,7 +366,7 @@
                                     <div class="col-lg-5 m-3 card-style">
                                         <div class="row">
                                             <div class="col-8">
-                                                <div class="card-body  d-none d-lg-block">
+                                                <div class="card-body">
                                                     <h4 class="card-title mt-4">Book</h4>
 
                                                     <div class="postcard__bar"></div>
@@ -426,7 +426,7 @@
                                     <div class="col-lg-5 m-3 card-style">
                                         <div class="row">
                                             <div class="col-8">
-                                                <div class="card-body  d-none d-lg-block">
+                                                <div class="card-body">
                                                     <h4 class="card-title mt-4">Book</h4>
 
                                                     <div class="postcard__bar"></div>

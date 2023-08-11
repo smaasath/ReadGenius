@@ -3,10 +3,10 @@ const bgSlider = document.getElementById("bgSlider");
 const main = document.querySelector("main");
 
 const pages = {
-  0: 'ReviewCategory.html',
-  1: 'ReviewCategory.html',
-  2: 'ReviewCategory.html',
-  3: 'ReviewCategory.html'
+  0: 'ReviewCategory.jsp',
+  1: 'ReviewCategory.jsp',
+  2: 'ReviewCategory.jsp',
+  3: 'ReviewCategory.jsp'
 };
 
 const btnPositions = [];

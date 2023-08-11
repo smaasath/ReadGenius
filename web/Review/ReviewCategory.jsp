@@ -16,7 +16,7 @@
 
     <body>
         <div class="row ">
-            <div class="col-7 m-2 p-3 rounded-3" style="background-color: #D2DAFF;">
+            <div class="col-lg-7 m-2 p-3 rounded-3" style="background-color: #D2DAFF;">
 
 
 
@@ -198,7 +198,7 @@
 
             </div>
 
-            <div class="col-4 m-2 ms-5 p-3 rounded-3" style="background-color: #D2DAFF;">
+            <div class="col-lg-4 m-2 ms-5 p-3 rounded-3" style="background-color: #D2DAFF;">
 
                 <div class="row p-1 justify-content-center align-items-center">
                     <div class="col-3 p-1" style="color: black">5 Star</div> 
