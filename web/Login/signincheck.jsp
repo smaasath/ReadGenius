@@ -55,7 +55,7 @@ if (action != null && action.equals("signin")) {
 
                 if (b > 0) {
                     JOptionPane.showMessageDialog(null, "Data Save Successfully", "Save Data", JOptionPane.INFORMATION_MESSAGE);
-                    response.sendRedirect("home.jsp");
+                    response.sendRedirect("../home.jsp");
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to insert user data", "Save Data", JOptionPane.ERROR_MESSAGE);
                 }
