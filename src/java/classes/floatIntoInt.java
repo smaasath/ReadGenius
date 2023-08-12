@@ -10,7 +10,7 @@ package classes;
  */
 public class floatIntoInt {
     public static int convertFloatToInt(float floatValue) {
-        int intValue = (int) floatValue; // Convert float to int using type casting
+       int intValue = (int) Math.ceil(floatValue);
         return intValue;
     }
     

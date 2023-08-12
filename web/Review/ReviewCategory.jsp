@@ -19,7 +19,9 @@
 <%
     Connection connection = null;
     PreparedStatement preparedStatement = null;
+    PreparedStatement preparedStatementReader = null;
     ResultSet resultSet = null;
+    ResultSet resultSetReader = null;
     int BookId = 4; // Replace with the actual BookId
 
     try {
@@ -35,7 +37,14 @@
         int id = resultSet.getInt("reviewId");
         int readerId = resultSet.getInt("readerId");
         String reviewText = resultSet.getString("reviewText");
-        float 	ratingValue = resultSet.getFloat("ratingValue");
+        float ratingValue = resultSet.getFloat("ratingValue");
+        String queryReder = "SELECT * FROM reader WHERE readerId =?";
+        preparedStatementReader = connection.prepareStatement(queryReder);
+        preparedStatementReader.setInt(1, readerId);
+        resultSetReader = preparedStatementReader.executeQuery();
+         if (resultSetReader.next()) {
+          String ReaderName = resultSetReader.getString("readerName");
+              byte[] imageBytes = resultSetReader.getBytes("image");
 %>
 
 <!DOCTYPE html>
@@ -62,29 +71,29 @@
 
                 <div class="row m-4 rounded-4" style="background-color: #EEF1FF;">
                     <div class="col-1 m-2">
-                        <img src="Images/profile.jpg" class="enlarge-on-hover rounded-circle" alt="..."
+                        <img src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes)%>" class="enlarge-on-hover rounded-circle" alt="..."
                              style="height: 50px;width: 50px;">
                     </div>
 
                     <div class="col-10 m-2" style="text-align: start;">
-                        <div class="h6" style="color: black;"> <%= readerId %></div>
+                        <div class="h6" style="color: black;"> <%= ReaderName%></div>
                         <div class="mb-2"style="color: black;">
 
                             <%  // Get the rating from the database or wherever
 
-                                   String ratingStars = RatingUtils.generateRatingStars(floatIntoInt.convertFloatToInt((float)ratingValue)); %>
+                                String ratingStars = RatingUtils.generateRatingStars(floatIntoInt.convertFloatToInt((float) ratingValue));%>
 
-                                <%= ratingStars%>
+                            <%= ratingStars%>
 
 
                         </div>
-                        <div class="p" style="color: black;font-size: 12px;"><%= reviewText %></div>
+                        <div class="p" style="color: black;font-size: 12px;"><%= reviewText%></div>
                     </div>
 
                 </div>
 
 
-              
+
 
 
 
@@ -96,35 +105,35 @@
         </div>
 
 
-<%
-            }
+        <%
+            }}
         %>
 
 
 
-</body>
+    </body>
 
 </html>
 
 
 <%
-    }catch (SQLException e) {
-        e.printStackTrace();
-    }finally {
-    // Close resources
-    try {
-        if (resultSet != null) {
-            resultSet.close();
-        }
-        if (preparedStatement != null) {
-            preparedStatement.close();
-        }
-        if (connection != null) {
-            connection.close();
-        }
     } catch (SQLException e) {
         e.printStackTrace();
+    } finally {
+        // Close resources
+        try {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-}
 %>
 

@@ -111,4 +111,33 @@ public class totalReview {
 
         return percentage;
     }
+
+    public static void AddReview(String BookId, String ReaderId, String Review, String rating) {
+
+        
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+
+            String insertQuery = "INSERT INTO `bookreview` (`reviewId`, `bookId`, `readerId`, `reviewText`, `ratingValue`) VALUES (NULL,?,?,?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+                preparedStatement.setInt(1, Integer.parseInt(BookId));
+                preparedStatement.setInt(2, Integer.parseInt(ReaderId));
+                preparedStatement.setString(3, Review);
+                preparedStatement.setString(4, rating);
+                int rowsAffected = preparedStatement.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    System.out.println("Data inserted successfully!");
+                } else {
+                    System.out.println("Failed to insert data.");
+                }
+            }
+
+            connection.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
