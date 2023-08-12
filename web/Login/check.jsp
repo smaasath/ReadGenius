@@ -13,12 +13,12 @@
  
                   
 
-    try {
+
         Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/readgenius", "root", "");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/readgenius", "root", "");
 
         String query = "SELECT * FROM user WHERE username = ? AND password = ?";
-        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+        PreparedStatement preparedStatement = con.prepareStatement(query);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet rs = preparedStatement.executeQuery();
@@ -35,7 +35,7 @@
     
     // Store data in the session
                   session.setAttribute("userId", userId);
-                    response.sendRedirect("../index.html");
+                    response.sendRedirect("../index.jsp");
                     
                 } else {
                     response.sendRedirect("../Admin/admin.html");
@@ -44,9 +44,7 @@
                JOptionPane.showMessageDialog(null, "incoorect username or password", "error", JOptionPane.INFORMATION_MESSAGE);
                     response.sendRedirect("login.jsp");
             }
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
+        
+    
 %>
 
