@@ -1,3 +1,43 @@
+
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.Base64"%>
+<%@page import="java.io.PrintWriter"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="classes.DatabaseConnector" %>
+<%@ page import="classes.Book" %>
+<%@ page import="classes.BookDetails" %>
+<%@ page import="classes.Author" %>
+<%@ page import="classes.AuthorDetails" %>
+<%@ page import="classes.RatingUtils" %>
+<%@ page import="classes.floatIntoInt" %>
+
+<%
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
+    int BookId = 4; // Replace with the actual BookId
+
+    try {
+        connection = DatabaseConnector.getConnection();
+        String query = "SELECT * FROM bookreview WHERE bookId=?";
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, BookId);
+        resultSet = preparedStatement.executeQuery();
+%>
+
+<%
+    while (resultSet.next()) {
+        int id = resultSet.getInt("reviewId");
+        int readerId = resultSet.getInt("readerId");
+        String reviewText = resultSet.getString("reviewText");
+        float 	ratingValue = resultSet.getFloat("ratingValue");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +56,7 @@
 
     <body>
         <div class="row ">
-            <div class="col-lg-7 m-2 p-3 rounded-3" style="background-color: #D2DAFF;">
+            <div class="col-lg-12 m-2 p-3 rounded-3" style="background-color: #D2DAFF;">
 
 
 
@@ -27,242 +67,64 @@
                     </div>
 
                     <div class="col-10 m-2" style="text-align: start;">
-                        <div class="h6" style="color: black;"> Mohamed Aasath</div>
+                        <div class="h6" style="color: black;"> <%= readerId %></div>
                         <div class="mb-2"style="color: black;">
 
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star fall"></span>
+                            <%  // Get the rating from the database or wherever
+
+                                   String ratingStars = RatingUtils.generateRatingStars(floatIntoInt.convertFloatToInt((float)ratingValue)); %>
+
+                                <%= ratingStars%>
 
 
                         </div>
-                        <div class="p" style="color: black;font-size: 12px;">In the mystical land of Elloria, where magic flows through the air like a gentle breeze, a young orphan named Lila discovers a hidden destiny that will change her life forever. "The Enchanted Chronicles" follows Lila's journey as she embarks on a quest to unlock her true potential and save her kingdom from an ancient evil threatening to plunge Elloria into darkness. When a mysterious elder reveals Lila's extraordinary gift for magic, she joins an elite group of warriors known as the Guardians of Light.</div>
+                        <div class="p" style="color: black;font-size: 12px;"><%= reviewText %></div>
                     </div>
 
                 </div>
 
 
-                <div class="row m-4 rounded-4"style="background-color: #EEF1FF;">
-                    <div class="col-1 m-2">
-                        <img src="Images/profile.jpg" class="enlarge-on-hover rounded-circle" alt="..."
-                             style="height: 50px;width: 50px;">
-                    </div>
-
-                    <div class="col-10 m-2" style="text-align: start;">
-                        <div class="h6" style="color: black;"> Mohamed Aasath</div>
-                        <div class="mb-2"style="color: black;">
-
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star fall"></span>
-
-
-                        </div>
-                        <div class="p" style="color: black;font-size: 12px;">In the mystical land of Elloria, where magic flows through the air like a gentle breeze, a young orphan named Lila discovers a hidden destiny that will change her life forever. "The Enchanted Chronicles" follows Lila's journey as she embarks on a quest to unlock her true potential and save her kingdom from an ancient evil threatening to plunge Elloria into darkness. When a mysterious elder reveals Lila's extraordinary gift for magic, she joins an elite group of warriors known as the Guardians of Light.</div>
-                    </div>
-
-                </div>
-
-
-
-                <div class="row m-4 rounded-4"style="background-color: #EEF1FF;">
-                    <div class="col-1 m-2">
-                        <img src="Images/profile.jpg" class="enlarge-on-hover rounded-circle" alt="..."
-                             style="height: 50px;width: 50px;">
-                    </div>
-
-                    <div class="col-10 m-2" style="text-align: start;">
-                        <div class="h6" style="color: black;"> Mohamed Aasath</div>
-                        <div class="mb-2"style="color: black;">
-
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star fall"></span>
-
-
-                        </div>
-                        <div class="p" style="color: black;font-size: 12px;">In the mystical land of Elloria, where magic flows through the air like a gentle breeze, a young orphan named Lila discovers a hidden destiny that will change her life forever. "The Enchanted Chronicles" follows Lila's journey as she embarks on a quest to unlock her true potential and save her kingdom from an ancient evil threatening to plunge Elloria into darkness. When a mysterious elder reveals Lila's extraordinary gift for magic, she joins an elite group of warriors known as the Guardians of Light.</div>
-                    </div>
-
-                </div>
-
-
-
-                <div class="row m-4 rounded-4"style="background-color: #EEF1FF;">
-                    <div class="col-1 m-2 ms-0">
-                        <img src="Images/profile.jpg" class="enlarge-on-hover rounded-circle" alt="..."
-                             style="height: 50px;width: 50px;">
-                    </div>
-
-                    <div class="col-10 m-2" style="text-align: start;">
-                        <div class="h6" style="color: black;"> Mohamed Aasath</div>
-                        <div class="mb-2"style="color: black;">
-
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star fall"></span>
-
-
-                        </div>
-                        <div class="p" style="color: black;font-size: 12px;">In the mystical land of Elloria, where magic flows through the air like a gentle breeze, a young orphan named Lila discovers a hidden destiny that will change her life forever. "The Enchanted Chronicles" follows Lila's journey as she embarks on a quest to unlock her true potential and save her kingdom from an ancient evil threatening to plunge Elloria into darkness. When a mysterious elder reveals Lila's extraordinary gift for magic, she joins an elite group of warriors known as the Guardians of Light.</div>
-                    </div>
-
-                </div>
-
-
-
-                <div class="row m-4 rounded-4"style="background-color: #EEF1FF;">
-                    <div class="col-1 m-2">
-                        <img src="Images/profile.jpg" class="enlarge-on-hover rounded-circle" alt="..."
-                             style="height: 50px;width: 50px;">
-                    </div>
-
-                    <div class="col-10 m-2" style="text-align: start;">
-                        <div class="h6" style="color: black;"> Mohamed Aasath</div>
-                        <div class="mb-2"style="color: black;">
-
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star fall"></span>
-
-
-                        </div>
-                        <div class="p" style="color: black;font-size: 12px;">In the mystical land of Elloria, where magic flows through the air like a gentle breeze, a young orphan named Lila discovers a hidden destiny that will change her life forever. "The Enchanted Chronicles" follows Lila's journey as she embarks on a quest to unlock her true potential and save her kingdom from an ancient evil threatening to plunge Elloria into darkness. When a mysterious elder reveals Lila's extraordinary gift for magic, she joins an elite group of warriors known as the Guardians of Light.</div>
-                    </div>
-
-                </div>
-
-
-
-                <div class="row m-4 rounded-4"style="background-color: #EEF1FF;">
-                    <div class="col-1 m-2">
-                        <img src="Images/profile.jpg" class="enlarge-on-hover rounded-circle" alt="..."
-                             style="height: 50px;width: 50px;">
-                    </div>
-
-                    <div class="col-10 m-2" style="text-align: start;">
-                        <div class="h6" style="color: black;"> Mohamed Aasath</div>
-                        <div class="mb-2"style="color: black;">
-
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star fall"></span>
-
-
-                        </div>
-                        <div class="p" style="color: black;font-size: 12px;">In the mystical land of Elloria, where magic flows through the air like a gentle breeze, a young orphan named Lila discovers a hidden destiny that will change her life forever. "The Enchanted Chronicles" follows Lila's journey as she embarks on a quest to unlock her true potential and save her kingdom from an ancient evil threatening to plunge Elloria into darkness. When a mysterious elder reveals Lila's extraordinary gift for magic, she joins an elite group of warriors known as the Guardians of Light.</div>
-                    </div>
-
-                </div>
-
-
-
-                <div class="row m-4 rounded-4"style="background-color: #EEF1FF;">
-                    <div class="col-1 m-2">
-                        <img src="Images/profile.jpg" class="enlarge-on-hover rounded-circle" alt="..."
-                             style="height: 50px;width: 50px;">
-                    </div>
-
-                    <div class="col-10 m-2" style="text-align: start;">
-                        <div class="h6" style="color: black;"> Mohamed Aasath</div>
-                        <div class="mb-2"style="color: black;">
-
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star checked fall"></span>
-                            <span class="fa fa-star fall"></span>
-
-
-                        </div>
-                        <div class="p" style="color: black;font-size: 12px;">In the mystical land of Elloria, where magic flows through the air like a gentle breeze, a young orphan named Lila discovers a hidden destiny that will change her life forever. "The Enchanted Chronicles" follows Lila's journey as she embarks on a quest to unlock her true potential and save her kingdom from an ancient evil threatening to plunge Elloria into darkness. When a mysterious elder reveals Lila's extraordinary gift for magic, she joins an elite group of warriors known as the Guardians of Light.</div>
-                    </div>
-
-                </div>
-
-
+              
 
 
 
             </div>
 
-            <div class="col-lg-4 m-2 ms-5 p-3 rounded-3" style="background-color: #D2DAFF;">
-
-                <div class="row p-1 justify-content-center align-items-center">
-                    <div class="col-3 p-1" style="color: black">5 Star</div> 
-                    <div class="col-7 p-1">
-                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar bg-success" style="width: 20%"></div>
-                        </div>
-                    </div>   
-                    <div class="col-2 p-1" style="color: black">100</div>     
-                </div>
-
-                <div class="row p-1 justify-content-center align-items-center">
-                    <div class="col-3 p-1" style="color: black">4 Star</div> 
-                    <div class="col-7 p-1">
-                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar  bg-info" style="width: 40%"></div>
-                        </div>
-                    </div>   
-                    <div class="col-2 p-1" style="color: black">200</div>     
-                </div>
-
-                <div class="row p-1 justify-content-center align-items-center">
-                    <div class="col-3 p-1" style="color: black">3 Star</div> 
-                    <div class="col-7 p-1">
-                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar" style="width: 50%"></div>
-                        </div>
-                    </div>   
-                    <div class="col-2 p-1" style="color: black">50</div>     
-                </div>
-
-                <div class="row p-1 justify-content-center align-items-center">
-                    <div class="col-3 p-1" style="color: black">2 Star</div> 
-                    <div class="col-7 p-1">
-                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar bg-warning" style="width: 35%"></div>
-                        </div>
-                    </div>   
-                    <div class="col-2 p-1" style="color: black">35</div>     
-                </div>
-
-                <div class="row p-1 justify-content-center align-items-center">
-                    <div class="col-3 p-1" style="color: black">1 Star</div> 
-                    <div class="col-7 p-1">
-                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar  bg-danger" style="width: 10%"></div>
-                        </div>
-                    </div>   
-                    <div class="col-2 p-1" style="color: black">50</div>     
-                </div>
-
-
-            </div>   
 
 
 
         </div>
 
-    </div>
 
-
+<%
+            }
+        %>
 
 
 
 </body>
 
 </html>
+
+
+<%
+    }catch (SQLException e) {
+        e.printStackTrace();
+    }finally {
+    // Close resources
+    try {
+        if (resultSet != null) {
+            resultSet.close();
+        }
+        if (preparedStatement != null) {
+            preparedStatement.close();
+        }
+        if (connection != null) {
+            connection.close();
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+%>
+
