@@ -1,4 +1,5 @@
 
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Base64"%>
 <%@page import="java.io.PrintWriter"%>
@@ -15,12 +16,35 @@
 <%@ page import="classes.RatingUtils" %>
 <%@ page import="classes.floatIntoInt" %>
 <%@ page import="classes.totalReview" %>
+<%@ page import="classes.Reader" %>
+<%@ page import="classes.ReaderDetails" %>
+<%@ page import="classes.User" %>
+<%@ page import="classes.UserDetails" %>
+<%
 
+   try{ 
+   
+   Integer userIdObj = (Integer) session.getAttribute("userId");
+    
+        if (userIdObj != null) {
+            int userId = userIdObj.intValue(); // Convert Integer to int
+            User user = UserDetails.getUserDetailsById(userId);
+            if (user != null) {
+       
+        Reader reader = ReaderDetails.getReaderDetailsById(user.getReaderId());
+
+    
+%>
 <%
     //   int bookId = Integer.parseInt(request.getParameter("bookId")); // Get book ID from request parameter
-    int bookId = 4;
-    
-    Book book = BookDetails.getBookDetailsById(bookId);
+
+    String AuthorId = request.getParameter("AuthorId");
+    String bookId = request.getParameter("BookId");
+    String readerId = request.getParameter("ReaderId");
+    int BookId = Integer.parseInt(bookId);
+    int ReaderId = Integer.parseInt(readerId);
+
+    Book book = BookDetails.getBookDetailsById(BookId);
     Author author = AuthorDetails.getAuthorDetailsById(book.getAuthorId());
 
 
@@ -41,6 +65,64 @@
         <link rel="stylesheet" href="css/ReviewStyle.css">
         <link rel="stylesheet" href="css/c.css">
         <title>Document</title>
+            <style>
+        /****** Rating Starts *****/
+        @import url(http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+        fieldset, label {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            margin: 20px;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin: 10px;
+        }
+
+        .rating {
+            border: none;
+            float: left;
+        }
+
+        .rating > input {
+            display: none;
+        }
+        .rating > label:before {
+            margin: 5px;
+            font-size: 1.25em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005";
+        }
+
+        .rating > .half:before {
+            content: "\f089";
+            position: absolute;
+        }
+
+        .rating > label {
+            color: #000;
+        }
+
+        .rating > input:checked ~ label,
+        .rating:not(:checked) > label:hover,
+        .rating:not(:checked) > label:hover ~ label {
+            color: #ffca08;
+        }
+
+        .rating > input:checked + label:hover,
+        .rating > input:checked ~ label:hover,
+        .rating > label:hover ~ input:checked ~ label,
+        .rating > input:checked ~ label:hover ~ label {
+            color: #ffca08;
+        }
+
+        .rating > label{
+            float:right
+        }
+    </style>
     </head>
 
     <body>
@@ -55,16 +137,16 @@
                             <div class="mt-4">
                                 <div class="h6"> Overall</div>
                                 <% DecimalFormat decimalFormat = new DecimalFormat("#.##");%>
-                               
-                                <% 
 
-                                   String ratingStars = RatingUtils.generateRatingStars(floatIntoInt.convertFloatToInt((float)totalReview.getOverollRating(bookId))); %>
+                                <%
+
+                                    String ratingStars = RatingUtils.generateRatingStars(floatIntoInt.convertFloatToInt((float) totalReview.getOverollRating(BookId)));%>
 
                                 <%= ratingStars%>
 
                                 <div class="h3">
-                                    <%= decimalFormat.format(totalReview.getOverollRating(bookId))  %></div>
-                                <span class="h7 m-2"><%= (int)totalReview.getReviewCount(bookId)  %> Reviews<span>
+                                    <%= decimalFormat.format(totalReview.getOverollRating(BookId))%></div>
+                                <span class="h7 m-2"><%= (int) totalReview.getReviewCount(BookId)%> Reviews<span>
                                         </div>
 
                                         </div>
@@ -127,7 +209,7 @@
                                                 <div class="m-1 p-4">
                                                     <div class="h1"><%= book.getTitle()%></div>
 
-                                                    <div class="h6 disabled mt-3">Mark Haddon</div>
+                                                    <div class="h6 disabled mt-3"><%= author.getAuthorName()%></div>
 
                                                     <div class="h6 disabled mt-3">Category : <%= book.getCategory()%></div>
 
@@ -144,21 +226,111 @@
                                                 </div>
                                             </div>
                                             <div class="h5 mt-4">Review</div>
-                                            <div class="col-lg-12 p-0" style="background-color: #F2F3F4 ;">
-                                                <header class="ps-3">
-                                                    <nav>
-                                                        <div id="bgSlider"></div>
-                                                        <button class='active'>My Review</button>
-                                                        <button>Reviews</button>
-                                                        <div class="slideBar"></div>
-                                                    </nav>
-                                                </header>
-                                                <main>
+                                            <div class="row">
+                                                <div class="m-1 p-4">
+                                                    <div class="row justify-content-center align-items-center">
 
-                                                </main>
+                                                        <div class="col-lg-10 m-2 ms-5 p-3 rounded-3" style="background-color: #D2DAFF;">
+
+                                                            <div class="row p-1 justify-content-center align-items-center">
+                                                                <div class="col-3 p-1" style="color: black">5 Star</div> 
+                                                                <div class="col-7 p-1">
+                                                                    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                                                        <div class="progress-bar bg-success" style="width: <%= totalReview.getreviewbystartvalue(BookId, 5)%>%"></div>
+                                                                    </div>
+                                                                </div>   
+                                                                <div class="col-2 p-1" style="color: black"><%= (int) totalReview.getreviewcountbystarvalue(BookId, 5)%></div>     
+                                                            </div>
+
+                                                            <div class="row p-1 justify-content-center align-items-center">
+                                                                <div class="col-3 p-1" style="color: black">4 Star</div> 
+                                                                <div class="col-7 p-1">
+                                                                    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                                                        <div class="progress-bar  bg-info" style="width:<%= totalReview.getreviewbystartvalue(BookId, 4)%>%"></div>
+                                                                    </div>
+                                                                </div>   
+                                                                <div class="col-2 p-1" style="color: black"><%= (int) totalReview.getreviewcountbystarvalue(BookId, 4)%></div>     
+                                                            </div>
+
+                                                            <div class="row p-1 justify-content-center align-items-center">
+                                                                <div class="col-3 p-1" style="color: black">3 Star</div> 
+                                                                <div class="col-7 p-1">
+                                                                    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                                                        <div class="progress-bar" style="width: <%= totalReview.getreviewbystartvalue(BookId, 3)%>%"></div>
+                                                                    </div>
+                                                                </div>   
+                                                                <div class="col-2 p-1" style="color: black"><%= (int) totalReview.getreviewcountbystarvalue(BookId, 3)%></div>     
+                                                            </div>
+
+                                                            <div class="row p-1 justify-content-center align-items-center">
+                                                                <div class="col-3 p-1" style="color: black">2 Star</div> 
+                                                                <div class="col-7 p-1">
+                                                                    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                                                        <div class="progress-bar bg-warning" style="width: <%= totalReview.getreviewbystartvalue(BookId, 2)%>%"></div>
+                                                                    </div>
+                                                                </div>   
+                                                                <div class="col-2 p-1" style="color: black"><%= (int) totalReview.getreviewcountbystarvalue(BookId, 2)%></div>     
+                                                            </div>
+
+                                                            <div class="row p-1 justify-content-center align-items-center">
+                                                                <div class="col-3 p-1" style="color: black">1 Star</div> 
+                                                                <div class="col-7 p-1">
+                                                                    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                                                        <div class="progress-bar  bg-danger" style="width: <%= totalReview.getreviewbystartvalue(BookId, 1)%>%"></div>
+                                                                    </div>
+                                                                </div>   
+                                                                <div class="col-2 p-1" style="color: black"><%= (int) totalReview.getreviewcountbystarvalue(BookId, 1)%></div>     
+                                                            </div>
+
+
+                                                        </div> 
+                                                    </div>
+                                                    <div class="row align-items-center justify-content-center">
+                                                        <div class="col-lg-10 m-2 ms-5 p-3 rounded-3" style="background-color: #D2DAFF;">
+                                                            <form action="ReviewProc.jsp" method="post">
+
+                                                                <div class="row align-items-center justify-content-center">
+                                                                    <div class="col-4"style="color: black; font-size: 10px; font-weight:bold">Select Your Rating</div>
+                                                                    <div class="col-8">
+                                                                        <label for="rating"></label>
+                                                                        <fieldset class="rating">
+                                                                            <input class="stars" type="radio" id="star5" name="rating" value="5" />
+                                                                            <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                                                            <input class="stars" type="radio" id="star4" name="rating" value="4" />
+                                                                            <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                                                            <input class="stars" type="radio" id="star3" name="rating" value="3" />
+                                                                            <label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                                                            <input class="stars" type="radio" id="star2" name="rating" value="2" />
+                                                                            <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                                                            <input class="stars" type="radio" id="star1" name="rating" value="1" />
+                                                                            <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                    <br> <br> <br>
+                                                                    <div class="col-4"style="color: black; font-size: 10px; font-weight:bold">Enter Your Comments</div>
+                                                                    <div class="col-8">
+                                                                        <textarea class="form-control"  name="Review"  rows="7" required></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <input type="hidden" name="BookId" value='<%=bookId%>'>  
+                                                                <input type="hidden" name="ReaderId" value='<%=readerId%>'>  
+                                                                <input type="hidden" name="AuthorId" value='<%=AuthorId %>'> 
+                                                                <br>
+                                                                <div class="row"> 
+                                                                    <div class="col-4"></div>
+                                                                    <div class="col-8">
+                                                                        <button type="submit" class="btn btn-success">Submit</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </form>
+
+                                                        </div> 
+
+                                                    </div>
+                                                </div>
+
                                             </div>
-
-                                        </div>
 
 
 
@@ -173,7 +345,91 @@
                                         </div>
 
                                         </div>
+                                                                <div>
+                                                                    
+                                                                    
+                                                                    <%
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    PreparedStatement preparedStatementReader = null;
+    ResultSet resultSet = null;
+    ResultSet resultSetReader = null;
+  
 
+    try {
+        connection = DatabaseConnector.getConnection();
+        String query = "SELECT * FROM bookreview WHERE bookId=?";
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, BookId);
+        resultSet = preparedStatement.executeQuery();
+%>
+ <div class="h5 mt-4">Others Review</div>
+ <div class=" p-4 mt-4" style="text-align: center; height: 99%;background-color: #EEF1FF; overflow: scroll;max-height: 600px;">
+<%
+    while (resultSet.next()) {
+        int id = resultSet.getInt("reviewId");
+        int readerIdd = resultSet.getInt("readerId");
+        String reviewText = resultSet.getString("reviewText");
+        float ratingValue = resultSet.getFloat("ratingValue");
+        String queryReder = "SELECT * FROM reader WHERE readerId =?";
+        preparedStatementReader = connection.prepareStatement(queryReder);
+        preparedStatementReader.setInt(1, readerIdd);
+        resultSetReader = preparedStatementReader.executeQuery();
+         if (resultSetReader.next()) {
+          String ReaderName = resultSetReader.getString("readerName");
+              byte[] imageBytes = resultSetReader.getBytes("image");
+%>
+
+<div class="row ">
+   
+            <div class="col-lg-12 m-2 p-3 rounded-3" style="background-color: #D2DAFF;">
+
+
+
+                <div class="row m-4 rounded-4" style="background-color: #EEF1FF;">
+                    <div class="col-1 m-2">
+                        <img src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes)%>" class="enlarge-on-hover rounded-circle" alt="..."
+                             style="height: 50px;width: 50px;">
+                    </div>
+
+                    <div class="col-10 m-2" style="text-align: start;">
+                        <div class="h6" style="color: black;"> <%= ReaderName%></div>
+                        <div class="mb-2"style="color: black;">
+
+                            <%  // Get the rating from the database or wherever
+
+                                String ratingStarss = RatingUtils.generateRatingStars(floatIntoInt.convertFloatToInt((float) ratingValue));%>
+
+                            <%= ratingStarss%>
+
+
+                        </div>
+                        <div class="p" style="color: black;font-size: 12px;"><%= reviewText%></div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+
+            </div>
+
+     
+
+
+        <%
+            }}
+        %>
+
+   </div>
+
+                                                                </div>
 
 
 
@@ -184,3 +440,38 @@
 
                                         </html>
 
+<%
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        // Close resources
+        try {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+%>
+<% }}else{
+response.sendRedirect("Login/login.jsp");
+}
+
+
+
+
+} catch (Exception e) {
+        e.printStackTrace();
+        
+    }
+
+
+
+%>

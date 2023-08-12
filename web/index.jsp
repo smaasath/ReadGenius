@@ -73,18 +73,16 @@
                         <ul class="navbar-nav">
 
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href=" ">Home</a>
+                                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href=" ">Book Feed</a>
+                                <a class="nav-link active" aria-current="page" href="Category/category.jsp">Category</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href=" ">Review</a>
+                                <a class="nav-link active" aria-current="page" href=" ">Profile</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href=" ">Wishlist</a>
-                            </li>
+                           
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"  >

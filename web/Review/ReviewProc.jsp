@@ -8,7 +8,23 @@
     String rating = request.getParameter("rating");
     String BookId = request.getParameter("BookId");
     String ReaderId = request.getParameter("ReaderId");
-totalReview.AddReview(BookId, ReaderId, Review, rating);
-response.sendRedirect("Review.jsp");
-   
+    String AuthorId = request.getParameter("AuthorId");
+    totalReview.AddReview(BookId, ReaderId, Review, rating);
+
+
 %>
+
+
+<form action="../Review/Review.jsp" id="myForm" method="post">
+    <input type="hidden" name="BookId" value='<%=BookId %>'>  
+    <input type="hidden" name="AuthorId" value='<%=ReaderId %>'>
+    <input type="hidden" name="ReaderId" value='<%=AuthorId %>'>
+  
+</form>
+
+<script>
+    // Automatically submit the form when the page loads
+    window.onload = function() {
+        document.getElementById("myForm").submit();
+    };
+</script>
