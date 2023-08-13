@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="container">
-            <form action="signincheck.jsp" method="post" enctype="multipart/form-data">
+            <form action="../tset" method="post" enctype="multipart/form-data">
                 <h1>Sign In</h1>
 
                 
