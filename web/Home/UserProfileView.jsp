@@ -20,18 +20,18 @@
 <%@ page import="classes.UserDetails" %>
 <%
 
-   try{ 
-   
-   Integer userIdObj = (Integer) session.getAttribute("userId");
-    
+    try {
+
+        Integer userIdObj = (Integer) session.getAttribute("userId");
+
         if (userIdObj != null) {
             int userId = userIdObj.intValue(); // Convert Integer to int
             User user = UserDetails.getUserDetailsById(userId);
             if (user != null) {
-       
-        Reader reader = ReaderDetails.getReaderDetailsById(user.getReaderId());
 
-    
+                Reader reader = ReaderDetails.getReaderDetailsById(user.getReaderId());
+
+
 %>
 <!DOCTYPE html>
 <html>
@@ -197,16 +197,20 @@
                             <br>
                             <span>User Name: <%=user.getUserName()%></span>
                             <br>
-                            <span>Email: <%=reader.getReaderEmail() %></span>
- <br><br><br>
+                            <span>Email: <%=reader.getReaderEmail()%></span>
+                            <br><br><br>
 
 
-                          
+
 
                             <div class="buttons">
+                                <form method="POST" action="userprofile.jsp">
+                                    
+                                    <input type="hidden" name="UserId" value='<%= user.getUserId() %>'>
+                                    <input type="hidden" name="ReaderId" value='<%= reader.getReaderId()%>'>
+                                    <button class="btn btn-primary px-4 ms-3" type="submit">Edit</button>
+                                </form>
 
-                              <a href="userprofile.html" class="btn btn-primary px-4 ms-3">Edit</a>
-                               
                             </div>
 
 
@@ -227,18 +231,15 @@
 
 </body>
 </html>
-<% }}else{
-response.sendRedirect("Login/login.jsp");
-}
+<% }
+        } else {
+            response.sendRedirect("Login/login.jsp");
+        }
 
-
-
-
-} catch (Exception e) {
+    } catch (Exception e) {
         e.printStackTrace();
-        
-    }
 
+    }
 
 
 %>
