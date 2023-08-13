@@ -1,8 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.io.InputStream"%>
 <%@page import="javax.swing.JOptionPane"%>
 <%@page import="java.sql.*"%>
-<%String action = request.getParameter("action");
-if (action != null && action.equals("signin")) {
+<%
 
         String name = request.getParameter("name");
         String username = request.getParameter("username");
@@ -66,6 +66,10 @@ if (action != null && action.equals("signin")) {
             con.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
+        }%>
+        
+      
+        <%
+  
 %>
+<%="jhj" %> 

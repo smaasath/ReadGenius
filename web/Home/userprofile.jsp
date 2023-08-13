@@ -55,6 +55,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
+          <link rel="stylesheet" href="../Home/nav.css"/> 
+        <link rel="stylesheet" href="../Home/home.css"/>
         <title>ReadGenius</title>
         <!--bootstrap-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -73,116 +75,114 @@
     </head>
     <body>
 
-        <style>
+         <style>
             body {
                 background-color: #F1F0F0;
                 overflow-x: hidden;
             }
+            .nav-item dropdown  {
+                font-weight: bold;
+            }
 
 
         </style>
-    <body>
+        <nav>
+        <div class="row mb-5">
+            <nav class="navbar navbar-expand-lg fixed-top" style="background-color:#B2B2B2 ;height: 90px;" >
+                <div class="container">
 
-        <nav class="navbar navbar-expand-lg fixed-top" style="background-color:#B2B2B2 ;height: 90px;" >
-            <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand " href="#"><img src="Home/img/logo.png" width="137px" height="43px" alt="ReadGenius"/></a>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand " href="#"><img src="img/logo.png" width="137px" height="43px" alt="ReadGenius"/></a>
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../index.jsp">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../Category/category.jsp">Category</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href=" ">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href=" ">Book Feed</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../Home/UserProfileView.jsp">Profile</a>
+                            </li>
+                           
 
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href=" ">Review</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href=" ">Wishlist</a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"  >
-                                Category
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Education</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Fiction</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Non-Fiction</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Poetry</a></li>
-                            </ul>
-                        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"  >
+                                    Category
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../Category/viewFiction.jsp">Fiction</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="../Category/viewHistorical.jsp">Historical</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="../Category/viewHorror.jsp">Horror</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="../Category/viewLove.jsp">Love</a></li>
+                                </ul>
+                            </li>
 
 
-                        <li class="nav-item">
-                            <!--search-->
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2 border-0" list="datalistOptions" id="exampleDataList" type="search" placeholder="Search" aria-label="Search" style="border-radius: 50px;background-color: #F4F4F4" size="30px">
-                                <button class="btn btn-outline-primary " type="submit" style="border-radius: 50px;"><i class="fa fa-magnifying-glass " ></i></button>
-                                <datalist id="datalistOptions" class="bg-white text-muted">
-                                    <option value="Education">
-                                    <option value="Novels">
-                                    <option value="Poetry">
-                                    <option value="Romance">
-                                    <option value="Fiction">
-                                    <option value="Non-Fiction">
-                                </datalist>
-                            </form>
+                            <li class="nav-item">
+                                <!--search-->
+                                <form class="d-flex" role="search">
+                                    <input class="form-control me-2 border-0" list="datalistOptions" id="exampleDataList" type="search" placeholder="Search" aria-label="Search" style="border-radius: 50px;background-color: #F4F4F4" size="30px">
+                                    <button class="btn btn-outline-primary " type="submit" style="border-radius: 50px;"><i class="fa fa-magnifying-glass " ></i></button>
+                                    <datalist id="datalistOptions" class="bg-white text-muted">
+                                        <option value="Education">
+                                        <option value="Novels">
+                                        <option value="Poetry">
+                                        <option value="Romance">
+                                        <option value="Fiction">
+                                        <option value="Non-Fiction">
+                                    </datalist>
+                                </form>
 
-                        </li>
+                            </li>
 
-                    </ul>
-                </div>
-                <div class="d-flex ">
+                        </ul>
+                    </div>
+                    <div class="d-flex ">
 
 
-                </div>
-                <!--profile--> 
-                <div class="dropdown ">
-                    <dvi class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <a class="navbar-brand " href="" type="button" > <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle me-2 "
-                                                                              style="width: 38px; height: 38px; object-fit: cover" data-bs-toggle="tooltip" data-bs-title=" See your profile" data-bs-placement="bottom" data-bs-title="Tooltip on bottom" /></a>
-                    </dvi>                                                                       
-                    <ul class="dropdown-menu border-0 shadow">
-                        <!--avatar-->
-                        <li><a class="dropdown-item" href="./userProfile.php">
-                                <div class="d-flex align-items-center">
-                                    <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle me-2 "style="width: 48px; height: 48px; object-fit: cover" />
-                                    <div class="d-flex flex-column mt-3 p-0">
-                                        <span class="fw-bold fs-6">Name</span>
-                                        <p class="text-muted fs-7">see your profile</p>
+                    </div>
+                    <!--profile--> 
+                    <div class="dropdown ">
+                        <dvi class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="navbar-brand " href="" type="button" > <img src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(reader.getImageBytes())%>" alt="avatar" class="rounded-circle me-2 "
+                                                                                  style="width: 38px; height: 38px; object-fit: cover" data-bs-toggle="tooltip" data-bs-title=" See your profile" data-bs-placement="bottom" data-bs-title="Tooltip on bottom" /></a>
+                        </dvi>                                                                       
+                        <ul class="dropdown-menu border-0 shadow">
+                            <!--avatar-->
+                            <li><a class="dropdown-item" href="../Home/UserProfileView.jsp">
+                                    <div class="d-flex align-items-center">
+                                        <img src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(reader.getImageBytes())%>" alt="avatar" class="rounded-circle me-2 "style="width: 48px; height: 48px; object-fit: cover"/>
+
                                     </div>
-                                </div>
-                            </a></li>
-                        <!--settings-->
-                        <!-- <li><a class="dropdown-item" href="#">
-                                <div class="d-flex align-items-center me-2">
-                                    <i class="fas fa-cog justify-content-center fs-5"></i>
-                                    <p class="m-0 ms-2">Settings</p>
-                                </div>
-                            </a></li> -->
-                        <hr>
-                        <!--logout-->
-                        <li><a class="dropdown-item" href="./Login.php">
-                                <div class="d-flex align-items-center me-2">
-                                    <i class="fa fa-sign-out justify-content-center fs-5"></i>
-                                    <p class="m-0 ms-2">Log out</p>
-                                </div>
-                            </a></li>
-                    </ul>
+                                </a></li>
+                            <!--settings-->
+                            <!-- <li><a class="dropdown-item" href="#">
+                                    <div class="d-flex align-items-center me-2">
+                                        <i class="fas fa-cog justify-content-center fs-5"></i>
+                                        <p class="m-0 ms-2">Settings</p>
+                                    </div>
+                                </a></li> -->
+                            <hr>
+                            <!--logout-->
+                            <li><a class="dropdown-item" href="../Login/login.php">
+                                    <div class="d-flex align-items-center me-2">
+                                        <i class="fa fa-sign-out justify-content-center fs-5"></i>
+                                        <p class="m-0 ms-2">Log out</p>
+                                    </div>
+                                </a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
         </div>
-    </nav>    
+    </nav>
 
     <!--Profile-->
     <div class="one">

@@ -80,7 +80,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href=" ">Profile</a>
+                                <a class="nav-link active" aria-current="page" href="Home/UserProfileView.jsp">Profile</a>
                             </li>
                            
 
@@ -89,13 +89,13 @@
                                     Category
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Education</a></li>
+                                    <li><a class="dropdown-item" href="Category/viewFiction.jsp">Fiction</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Fiction</a></li>
+                                    <li><a class="dropdown-item" href="Category/viewHistorical.jsp">Historical</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Non-Fiction</a></li>
+                                    <li><a class="dropdown-item" href="Category/viewHorror.jsp">Horror</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Poetry</a></li>
+                                    <li><a class="dropdown-item" href="Category/viewLove.jsp">Love</a></li>
                                 </ul>
                             </li>
 
@@ -146,7 +146,7 @@
                                 </a></li> -->
                             <hr>
                             <!--logout-->
-                            <li><a class="dropdown-item" href="./Login.php">
+                            <li><a class="dropdown-item" href="Login/login.jsp">
                                     <div class="d-flex align-items-center me-2">
                                         <i class="fa fa-sign-out justify-content-center fs-5"></i>
                                         <p class="m-0 ms-2">Log out</p>
@@ -259,9 +259,9 @@
                     <div class="card">
                         <img src="Home/Images/edu.jpg" alt="" class="card image-top" height="200px">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Education</h5>
+                            <h5 class="card-title text-center">Fiction</h5>
                             <p class="text-center">Explore our Education Category for a diverse selection of books catering to students, teachers, and lifelong learners. From textbooks to teaching resources.</p>
-                            <div id="btn2" class="text-center"><button>View more</button></div>
+                            <div id="btn2" class="text-center"><a href="Category/viewFiction.jsp"><button>View more</button></a></div>
                         </div>
                     </div>
                 </div>
@@ -270,9 +270,9 @@
                     <div class="card">
                         <img src="Home/Images/literary.jpg" alt="" class="card image-top" height="200px">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Literary Fiction</h5>
+                            <h5 class="card-title text-center">Historical</h5>
                             <p class="text-center"> Our Literary Fiction Category awaits, offering a curated selection of thought-provoking and beautifully crafted narratives. Embark on a journey of literary.</p>
-                            <div id="btn2" class="text-center"><button>View more</button></div>
+                            <div id="btn2" class="text-center"><a href="Category/viewHistorical.jsp"><button>View more</button></a></div>
                         </div>
                     </div>
                 </div>
@@ -281,9 +281,9 @@
                     <div class="card">
                         <img src="Home/Images/mystry.jpg" alt="" class="card image-top" height="200px">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Mystry</h5>
+                            <h5 class="card-title text-center">Horror</h5>
                             <p class="text-center">Unravel the Enigma of Mystery Books: Step into our Mystery Category, a captivating world of suspense, intrigue, and thrilling plots.</p>
-                            <div id="btn2" class="text-center"><button>View more</button></div>
+                            <div id="btn2" class="text-center"><a href="Category/viewHorror.jsp"><button>View more</button></a></div>
                         </div>
                     </div>
                 </div>
@@ -299,34 +299,14 @@
                     <div class="card">
                         <img src="Home/Images/romance.jpg" alt="" class="card image-top" height="200px">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Romance</h5>
+                            <h5 class="card-title text-center">Love</h5>
                             <p class="text-center">Embrace the Magic of Romance: Enter our Romance Category, a realm of heartwarming tales and captivating love stories. </p>
-                            <div id="btn2" class="text-center"><button>View more</button></div>
+                            <div id="btn2" class="text-center"><a href="Category/viewLove.jsp"><button>View more</button></a></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 py-3 py-md-0">
-                    <div class="card">
-                        <img src="Home/Images/poetry.jpg" alt="" class="card image-top" height="200px">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Poetry</h5>
-                            <p class="text-center">Discover the Beauty of Poetry: Immerse yourself in our Poetry Category, where words become art and emotions take flight.Enjoy reading and explore poetry. </p>
-                            <div id="btn2" class="text-center"><button>View more</button></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 py-3 py-md-0">
-                    <div class="card">
-                        <img src="Home/Images/fantacy.jpg" alt="" class="card image-top" height="200px">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Fantasy</h5>
-                            <p class="text-center">Embark on an Epic Adventure: Step into our Fantasy Category, a realm of magic and mythical creatures.Wishing you a fantastical fantasy journey.</p>
-                            <div id="btn2" class="text-center"><button>View more</button></div>
-                        </div>
-                    </div>
-                </div>
+              
 
             </div>
         </div>
