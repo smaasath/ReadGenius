@@ -38,7 +38,7 @@
                     response.sendRedirect("../index.jsp");
                     
                 } else {
-                    response.sendRedirect("../Admin/admin.html");
+                    response.sendRedirect("../Admin/admin.jsp");
                 }
             } else {
                JOptionPane.showMessageDialog(null, "incoorect username or password", "error", JOptionPane.INFORMATION_MESSAGE);
